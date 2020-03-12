@@ -1,0 +1,69 @@
+<template>
+        <section>
+            <nav class="nav1">
+                <img src="/img/wy_03.png" alt="">
+            </nav>
+            <nav class="nav2">
+                <img src="/img/wy_06.png" alt="">
+            </nav>
+            <article>
+                <choose :img="'url(/img/wy_11.png)'"/>
+                <choose/>
+                <choose/>
+                <choose/>
+                <choose/>
+            </article>
+            <article>
+                <choose/>
+                <choose/>
+                <choose/>
+                <choose/>
+                <choose/>
+            </article>
+            <div>
+                <aside></aside>
+                <aside></aside>
+            </div>
+            <div class="footer">
+                <h2>优惠专区</h2>
+            </div>
+            <article class="footer2">
+                <aside><img src="/img/wy_34.png" alt=""></aside>
+                <aside><img src="/img/wy_36.png" alt=""></aside>
+                <aside><img src="/img/wy_34.png" alt=""></aside>
+                <aside><img src="/img/wy_36.png" alt=""></aside>
+                <aside><img src="/img/wy_34.png" alt=""></aside>
+                <aside><img src="/img/wy_36.png" alt=""></aside> <aside><img src="/img/wy_34.png" alt=""></aside>
+                <aside><img src="/img/wy_36.png" alt=""></aside> <aside><img src="/img/wy_34.png" alt=""></aside>
+                <aside><img src="/img/wy_36.png" alt=""></aside>
+            </article>
+        </section>
+ 
+</template>
+
+<script>
+    import Choose from '../components/choose'    
+    export default {
+        name:'home',
+        components: {
+            Choose
+        }
+    }
+</script>
+<style scoped>
+    section{display:flex;flex-flow:column;padding:0.15rem 0.1rem;flex:1;overflow:auto;}
+    section nav img{width:100%;}
+    section .nav2{margin:0.05rem 0;}
+    section article{display:flex;height:0.64rem;justify-content:space-between;padding:0 0.05rem;}
+    section article:nth-of-type(2){margin:0.11rem 0;}
+    section article:first-of-type{margin:0.05rem 0;}
+    section div{display:flex;justify-content:center;}
+    section div aside{width:0.15rem;height:0.04rem;background:red;border-radius:10px;}
+    section div aside:last-of-type{background:#e4e4e4;margin-left:5px;}
+    section div aside:first-of-type{background:#ffd161;margin-right:5px;}
+    section .footer{height:0.59rem;justify-content:flex-start;align-items:flex-end;}
+    section .footer h2{font-size:0.20rem;}
+    section .footer2{display:flex;flex-flow:wrap;padding:0;height:auto;}
+    section article aside{width:49%;margin:0.1rem 0;}
+    section article aside img{width:100%;}
+</style>
