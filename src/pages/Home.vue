@@ -25,33 +25,43 @@
                 <aside></aside>
             </div>
             <div class="footer">
-                <h2>优惠专区</h2>
+                <h2>附近商家</h2>
             </div>
-            <article class="footer2">
-                <aside><img src="/img/wy_34.png" alt=""></aside>
-                <aside><img src="/img/wy_36.png" alt=""></aside>
-                <aside><img src="/img/wy_34.png" alt=""></aside>
-                <aside><img src="/img/wy_36.png" alt=""></aside>
-                <aside><img src="/img/wy_34.png" alt=""></aside>
-                <aside><img src="/img/wy_36.png" alt=""></aside> <aside><img src="/img/wy_34.png" alt=""></aside>
-                <aside><img src="/img/wy_36.png" alt=""></aside> <aside><img src="/img/wy_34.png" alt=""></aside>
-                <aside><img src="/img/wy_36.png" alt=""></aside>
-            </article>
+            <aside class="main">
+                <cell :data="data"/>
+                <cell :data="data"/>
+                <cell :data="data"/>
+                <cell :data="data"/>
+            </aside>
         </section>
  
 </template>
 
 <script>
-    import Choose from '../components/choose'    
+    import Choose from '../components/choose' 
+    import Cell from '../components/cell' 
     export default {
         name:'home',
         components: {
-            Choose
-        }
+            Choose,Cell
+        },
+        data() {
+            return {
+                data:{
+                    img: 'url(/img/wy_11.png)',
+                    name: '吃茶去',
+                    distance: 3.9,
+                    evaluation: 4.8,
+                    pick: 20,
+                    delivery: 3,
+                    mounth:138
+                }
+            }
+        },
     }
 </script>
 <style scoped>
-    section{display:flex;flex-flow:column;padding:0.15rem 0.1rem;flex:1;overflow:auto;}
+    section{display:flex;flex-flow:column;padding:0.15rem 0.1rem;flex:1;overflow:auto;background: #fff;}
     section nav img{width:100%;}
     section .nav2{margin:0.05rem 0;}
     section article{display:flex;height:0.64rem;justify-content:space-between;padding:0 0.05rem;}
@@ -62,8 +72,6 @@
     section div aside:last-of-type{background:#e4e4e4;margin-left:5px;}
     section div aside:first-of-type{background:#ffd161;margin-right:5px;}
     section .footer{height:0.59rem;justify-content:flex-start;align-items:flex-end;}
-    section .footer h2{font-size:0.20rem;}
-    section .footer2{display:flex;flex-flow:wrap;padding:0;height:auto;}
-    section article aside{width:49%;margin:0.1rem 0;}
-    section article aside img{width:100%;}
+    section .footer h2{font-size:0.20rem;font-weight: bold;}
+    section .main{display: flex;flex-flow: column;padding-top:0.19rem}
 </style>
