@@ -7,18 +7,18 @@
                 <img src="/img/wy_06.png" alt="">
             </nav>
             <article>
-                <choose :img="'url(/img/wy_11.png)'"/>
-                <choose/>
-                <choose/>
-                <choose/>
-                <choose/>
+                <choose
+                    :val="item.val"
+                    :img="item.img"
+                    v-for="(item, index) in first" :key="index"
+                />
             </article>
             <article>
-                <choose/>
-                <choose/>
-                <choose/>
-                <choose/>
-                <choose/>
+                <choose
+                    :val="item.val"
+                    :img="item.img"
+                    v-for="(item, index) in second" :key="index"
+                />
             </article>
             <div>
                 <aside></aside>
@@ -55,8 +55,20 @@
                     pick: 20,
                     delivery: 3,
                     mounth:138
-                }
+                },
+                first:[],
+                second: [],
             }
+        },
+        mounted() {
+            axios({
+                url:'data/choose.json'
+            }).then(
+                res => {
+                    this.first = res.data[0].first
+                    this.second = res.data[0].second
+                }
+            )
         },
     }
 </script>

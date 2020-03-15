@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input :type="type" :placeholder="val">
+        <input :type="type" :placeholder="val" @input="$emit('input',$event.target.value)">
     </div>
 </template>
 

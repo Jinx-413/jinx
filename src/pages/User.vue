@@ -2,12 +2,12 @@
     <div class="user">
         <div class="headers">
             <section>
-                <div class="set">设置</div>
-                <div class="news">消息</div>
+                <div class="set" @click="set"></div>
+                <div class="news"></div>
             </section>
             <dl>
-                <dt></dt>
-                <dd>年后</dd>
+                <dt :style="{backgroundImage: `url(${$baseUrl}${user.icon})`}"></dt>
+                <dd>{{user.nikename}}</dd>
             </dl>
         </div>
         <div class="content">
@@ -30,17 +30,49 @@
 <script>
     import UserCell from '../components/user-cell'    
     export default {
+        beforeRouteEnter (to, from, next) {
+            let local = window.localStorage.getItem('user')
+
+            if(!local){
+                next('/login')
+                return
+            }
+
+            axios({
+                url: '/api/user',
+            }).then(
+                res => {
+                    if(res.data.err == 0){
+                        next(_this => _this.user = res.data.data);
+                    }else{
+                        next('/login')
+                    }
+                }
+            )
+        },
         name:'User',
         components: {
             UserCell
-        }
+        },
+        data() {
+            return {
+                user: {}
+            }
+        },
+        methods: {
+            set(){
+                this.$router.push('/set')
+            }
+        },
     }
 </script>
 <style scoped>
     .user{display:flex;flex-flow: column;height:100%}
     .user .headers{height:1.2rem;background:#ffc74a;display: flex;flex-flow: column;}
     .user .headers section{display: flex;justify-content:flex-end;padding-top:0.13rem;}
-    .user .headers section div{width:0.19rem;height:0.19rem;background:red;margin-right:0.1rem}
+    .user .headers section div{width:0.19rem;height:0.19rem;margin-right:0.1rem}
+    .user .headers section .set{background:url(../assets/img/set.png) center/0.19rem 0.19rem}
+    .user .headers section .news{background:url(../assets/img/news.png) center/0.19rem 0.19rem}
     .user .headers dl{display:flex; align-items: center;margin:0.26rem 0 0 0.14rem}
     .user .headers dl dt{width:0.45rem;height:0.45rem; background-image:url(/img/wy_28.png); border-radius: 50%;border:1px solid #fff;background-size:100%;overflow: hidden;}
     .user .headers dl dd{margin-left:0.07rem;color:#fff;font-size: 0.15rem;}

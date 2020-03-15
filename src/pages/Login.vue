@@ -2,13 +2,13 @@
     <div class="login">
         <back nav="登录"/>
         <div class="input">
-            <uc-input val="手机号"/>
-            <uc-input val="密  码" type="password"/>
+            <uc-input val="手机号" v-model="username"/>
+            <uc-input val="密  码" type="password" v-model="password"/>
         </div>
         <uc-button @click="submit" btn="登录"></uc-button>
         <div class="set">
             <span>忘记密码</span>
-            <span>立即注册</span>
+            <span @click="reg">立即注册</span>
         </div>
         <div class="vx-qq">
             <dl>
@@ -20,6 +20,12 @@
                 <dd>QQ登录</dd>
             </dl>
         </div>
+        <transition
+            enter-active-class="animated bounceIn"
+            leave-active-class="animated bounceOut"
+        >
+            <div class="error" v-if="bl" :key="1">{{errMsg}}</div>
+        </transition>
     </div>
 </template>
 
@@ -28,14 +34,56 @@
     import UcButton from '../components/uc-button.vue'
     import UcInput from '../components/uc-input.vue'
     export default {
+        name: 'login',
+        data() {
+            return {
+                username: '',
+                password: '',
+                errMsg: '',
+                bl: false
+            }
+        },
         components: {
             back, UcButton, UcInput
         },
         methods: {
             submit(){
-                alert('jinx!!!');
+                axios({
+                    url: '/api/login',
+                    method: 'post',
+                    data: {
+                        username: this.username,
+                        password: this.password
+                    }
+                }).then(
+                    res => {
+                        if(res.data.err !== 0){
+                           this.bl = true;
+                           this.errMsg = res.data.msg;
+                        }else{
+
+                            this.bl = false;
+                            setTimeout(() => {
+                                //本地种用户信息
+                                window.localStorage.setItem('user', JSON.stringify(res.data))
+                                
+                                //跳转到之前的页面
+                                if(this.$route.query.p){
+                                    this.$router.replace(this.$route.query.p)
+                                }else{
+                                    this.$router.replace('/user')
+                                }
+                            },1000)
+                          
+                        }
+                    }
+                )
+            },
+            reg(){
+                this.$router.replace('/reg')
             }
         },
+
     }
     
 </script>
@@ -52,4 +100,6 @@
     .login .vx-qq dl:nth-child(1) dt{background-image:url(../assets/img/vx_login.png);}    
     .login .vx-qq dl:nth-child(2) dt{background-image:url(../assets/img/qq_login.png);}    
     .login .vx-qq dl dd{font-size:0.12rem;color:#999;}    
+
+    .error{position:absolute;width:80%;height:0.4rem;bottom: 3rem;left:0;right:0;margin: auto;border-radius:10px;border:1px solid #ccc;display: flex;justify-content: center;align-items: center;font-size:0.14rem;color: red;}    
 </style>

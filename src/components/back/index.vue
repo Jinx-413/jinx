@@ -1,6 +1,6 @@
 <template>
-    <div class="back">
-        <button @click="goBack"></button>
+    <div class="back" :style="{background: bgColor}">
+        <button @click="goBack" v-if="bl"></button>
         <h1>{{nav}}</h1>
     </div>
 </template>
@@ -12,6 +12,14 @@
             nav: {
                 type: String,
                 default: '标题'
+            },
+            bl: {
+                default:Boolean,
+                default: true
+            },
+            bgColor: {
+                type: String,
+                default: '#f7f7f7'
             }
         },
         methods: {

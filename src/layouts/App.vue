@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- <Loading v-if="$root.bLoading"/> -->
     <Header v-if="$root.bHeader"/>
     <router-view></router-view>
     <Footer v-if="$root.bFooter"/>
@@ -10,10 +11,11 @@
 <script>
   import Header from './Header.vue';
   import Footer from './Footer.vue';
+  import Loading from '../components/loading'
   export default {
     name: 'App',
     components: {
-      Header,Footer
+      Header,Footer,Loading
     },
     watch: {
       $route: {
@@ -26,7 +28,7 @@
             this.$root.bHeader=this.$root.bFooter=true;
           }
           
-          if(/login/.test(path)){//detial login reg
+          if(/login|reg|set/.test(path)){//detial login reg
             this.$root.bHeader=this.$root.bFooter=false;
           }
           
