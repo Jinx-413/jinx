@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- <Loading v-if="$root.bLoading"/> -->
-    <Header v-if="$root.bHeader"/>
+    <Header v-if="$store.state.bHeader"/>   
     <router-view></router-view>
-    <Footer v-if="$root.bFooter"/>
+    <Footer v-if="$store.state.bFooter"/>
     <!-- <Login/> -->
   </div>
 </template>
@@ -25,16 +25,22 @@
           let path = val.path;
           
           if(/home/.test(path)){//home follow column
-            this.$root.bHeader=this.$root.bFooter=true;
+            // this.$root.bHeader=this.$root.bFooter=true;
+            this.$store.commit('UPDATA_HEADER', true)
+            this.$store.commit('UPDATA_FOOTER', true)
           }
           
-          if(/login|reg|set/.test(path)){//detial login reg
-            this.$root.bHeader=this.$root.bFooter=false;
+          if(/login|reg|set|details|goods|ratings|seller/.test(path)){//detial login reg
+            // this.$root.bHeader=this.$root.bFooter=false;
+            this.$store.commit('UPDATA_HEADER', false)
+            this.$store.commit('UPDATA_FOOTER', false)
           }
           
           if(/user|order|look/.test(path)){//user path.includes('/user')
-            this.$root.bHeader=false;
-            this.$root.bFooter=true;
+           /*  this.$root.bHeader=false;
+            this.$root.bFooter=true; */
+            this.$store.commit('UPDATA_HEADER', false)
+            this.$store.commit('UPDATA_FOOTER', true)
           }
         },
       },

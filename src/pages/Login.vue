@@ -66,6 +66,7 @@
                             setTimeout(() => {
                                 //本地种用户信息
                                 window.localStorage.setItem('user', JSON.stringify(res.data))
+                                this.$store.commit(`user/USER`, res.data)
                                 
                                 //跳转到之前的页面
                                 if(this.$route.query.p){

@@ -23,6 +23,8 @@
             loginOut(){
                 //删除 本地 token
                 window.localStorage.removeItem('user')
+                //删除状态管理的token
+                this.$store.commit(this.$types.USER, {err: 1})
                 //发送注销请求
                 this.$router.replace('/login')
             }
@@ -30,6 +32,6 @@
     }
 </script>
 <style scoped>
-    .set{display: flex;flex-flow:column}
+    .set{display: flex;flex-flow:column;position: absolute;width:100%;z-index:30;background: #f7f7f7;height:100%;}
     .set button{display: flex;width:100%;height:0.53rem;justify-content: center;border:0;outline: none;color:red;font-size: 0.18rem;background:rgba(0,0,0,0);border-bottom: 1px solid #ececec;}
 </style>

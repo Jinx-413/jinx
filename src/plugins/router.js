@@ -10,20 +10,33 @@ import Order from '../pages/Order.vue'
 import Login from '../pages/Login.vue'
 import Reg from '../pages/Reg.vue'
 import SetUp from '../pages/SetUp.vue'
+import Details from '../pages/Details.vue'
+import goods from '../components/goods/goods.vue'
+import ratings from '../components/ratings/ratings.vue'
+import seller from '../components/seller/seller.vue'
 
 let routes = [
     {path:'/home', component: Home},
-    {path:'/user', component: User},
+    {path:'/user', component: User, children: [
+        {path:'set', component: SetUp, name:'set'},
+    ]},
     {path:'/order', component: Order},
     {path:'/look', component: Look},
     {path:'/login', component: Login, name:'login'},
-    {path:'/set', component: SetUp,},
     {path:'/reg', component: Reg},
+    {path:'/details/:_id', component: Details, redirect:'/details/:_id/goods', children:[
+        {path:"goods",component:goods,name:'goods'},
+        {path:"ratings",component:ratings,name:'ratings'},
+        {path:"seller",component:seller,name:'seller'},
+    ]},
+    
     {path:'/', redirect: '/home'}
 ]
 
 const router = new VueRouter({
-    routes
+    routes,
+    mode: 'history',
+    linkActiveClass:"active"
 })
 
 export default router;

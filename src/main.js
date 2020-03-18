@@ -19,15 +19,25 @@ import 'animate.css'
 //引入axios配置
 import './plugins/axios.js'
 
+//引入store
+import store from './plugins/vuex.js'
+
+import './common/stylus/index.styl'
+
+import * as types from './store/types.js'
+
+//获取本地token，添加到vuex
+let local = window.localStorage.getItem('user')
+if(local){
+  store.commit(`user/${types.USER}`, JSON.parse(local))
+}
+
+Vue.prototype.$types = types
+
 let vm = new Vue({
-  data:{
-    bNav:false,
-    bFoot:false,
-    bLoading:false,
-    bHeader:false,
-  },
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')
 
 export default vm;

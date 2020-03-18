@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="headers">
         <section>
             <place :place=" '德州' "/>
             <weather/>
@@ -19,8 +19,8 @@
         }
     }
 </script>
-<style>
-    .header{height:0.87rem;background:#ffc74a;display:flex;flex-flow:column;padding:0 0.1rem 0 0.1rem;}
-    .header section{display:flex;flex-flow:row;height:0.37rem;justify-content: space-between;}
-    .header section article{display:flex;}
+<style scoped>
+    .headers{height:0.87rem;background:#ffc74a;display:flex;flex-flow:column;padding:0 0.1rem 0 0.1rem;}
+    .headers section{display:flex;flex-flow:row;height:0.37rem;justify-content: space-between;}
+    .headers section article{display:flex;}
 </style>

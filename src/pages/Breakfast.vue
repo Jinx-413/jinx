@@ -1,7 +1,7 @@
 <template>
     <div class="takeaway">
-        <order-cell :data="data[index]" @click="push" 
-            v-for="(item, index) in data" :key="index"
+        <order-cell :data="$store.state.breakfast.breakfast[index]" @click="push" 
+            v-for="(item, index) in $store.state.breakfast.breakfast" :key="index"
         />
     </div>
 </template>
@@ -22,13 +22,7 @@
             }
         },
         mounted() {
-            axios({
-                url: '/api/goods/breakfast',
-            }).then(
-                res => {
-                    this.data = res.data.data
-                }
-            )
+            this.$store.dispatch(`breakfast/${this.$types.BREAKFAST}`)
         },
         
     }

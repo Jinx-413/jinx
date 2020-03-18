@@ -53,6 +53,10 @@
         },
         methods: {
             submit(){
+                if(this.username.length == 0 || this.password == '' || this.nPassword == ''){
+                    this.bl = true
+                    this.errMsg = '手机号密码为必传参数' 
+                }
                 if(this.password !== this.nPassword){
                     this.bl = true
                     this.errMsg = '两次密码必须一致' 

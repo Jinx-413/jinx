@@ -1,5 +1,5 @@
 <template>
-    <dl class="cell" :style="{marginBottom: buttom}">
+    <dl class="cell" :style="{marginBottom: buttom}" @click="getDetail">
         <dt :style="{backgroundImage: data.img}"></dt>
         <dd>
             <p class="p1">
@@ -40,8 +40,19 @@
                 //...
                 return {}
                 }
+            },
+            apiName: {
+                type: String,
+                default: null
             }
-        }
+        },
+        methods: {
+            getDetail(){
+                if(this.apiName){
+                    this.$router.replace(`/details/${this.data._id}?apiName=${this.apiName}`);//编程式跳转
+                }
+            }
+        },
     }
 </script>
 <style scoped>

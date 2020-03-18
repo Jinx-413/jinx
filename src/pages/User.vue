@@ -1,13 +1,22 @@
 <template>
     <div class="user">
+        <transition
+            enter-active-class="animated fadeInLeft"
+            leave-active-class="animated fadeOutLeft"
+        >
+            <router-view></router-view>
+        </transition>
         <div class="headers">
             <section>
-                <div class="set" @click="set"></div>
+                
+                <router-link :to="{name: 'set'}">
+                    <div class="set"></div>
+                </router-link>
                 <div class="news"></div>
             </section>
             <dl>
-                <dt :style="{backgroundImage: `url(${$baseUrl}${user.icon})`}"></dt>
-                <dd>{{user.nikename}}</dd>
+                <dt :style="{backgroundImage: `url(${$baseUrl}${$store.state.user.user.data.icon})`}"></dt>
+                <dd>{{$store.state.user.user.data.nikename}}</dd>
             </dl>
         </div>
         <div class="content">
@@ -28,15 +37,18 @@
 </template>
 
 <script>
-    import UserCell from '../components/user-cell'    
+    import UserCell from '../components/user-cell'
+    import store from '../plugins/vuex.js'      
     export default {
         beforeRouteEnter (to, from, next) {
-            let local = window.localStorage.getItem('user')
+            // let local = window.localStorage.getItem('user')
+            /* let token = store.state.user.token
+            token ? token : ''
 
-            if(!local){
+            if(!token){
                 next('/login')
                 return
-            }
+            } */
 
             axios({
                 url: '/api/user',
@@ -60,14 +72,11 @@
             }
         },
         methods: {
-            set(){
-                this.$router.push('/set')
-            }
         },
     }
 </script>
 <style scoped>
-    .user{display:flex;flex-flow: column;height:100%}
+    .user{display:flex;flex-flow: column;height:100%;position: absolute;width: 100%;}
     .user .headers{height:1.2rem;background:#ffc74a;display: flex;flex-flow: column;}
     .user .headers section{display: flex;justify-content:flex-end;padding-top:0.13rem;}
     .user .headers section div{width:0.19rem;height:0.19rem;margin-right:0.1rem}

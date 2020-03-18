@@ -10,14 +10,14 @@
                 <choose
                     :val="item.val"
                     :img="item.img"
-                    v-for="(item, index) in first" :key="index"
+                    v-for="(item, index) in $store.state.home.home.first" :key="index"
                 />
             </article>
             <article>
                 <choose
                     :val="item.val"
                     :img="item.img"
-                    v-for="(item, index) in second" :key="index"
+                    v-for="(item, index) in $store.state.home.home.second" :key="index"
                 />
             </article>
             <div>
@@ -28,10 +28,11 @@
                 <h2>附近商家</h2>
             </div>
             <aside class="main">
-                <cell :data="data"/>
-                <cell :data="data"/>
-                <cell :data="data"/>
-                <cell :data="data"/>
+                <cell
+                 :data="$store.state.home2.home2[index]"
+                 v-for="(item, index) in $store.state.home2.home2" :key="index"
+                 :apiName="'home'"
+                />
             </aside>
         </section>
  
@@ -48,8 +49,8 @@
         data() {
             return {
                 data:{
-                    img: 'url(/img/wy_11.png)',
-                    name: '吃茶去',
+                    img: 'url(http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg)',
+                    name: '欧品香坊（回龙观）',
                     distance: 3.9,
                     evaluation: 4.8,
                     pick: 20,
@@ -61,14 +62,17 @@
             }
         },
         mounted() {
-            axios({
+            /* axios({
                 url:'data/choose.json'
             }).then(
                 res => {
                     this.first = res.data[0].first
                     this.second = res.data[0].second
                 }
-            )
+            ) */
+            this.$store.dispatch(`home/${this.$types.HOME}`)
+
+            this.$store.dispatch(`home2/${this.$types.HOME2}`)
         },
     }
 </script>
