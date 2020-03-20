@@ -12,9 +12,9 @@
                 <router-link :to="{name: 'set'}">
                     <div class="set"></div>
                 </router-link>
-                <div class="news"></div>
+                <div class="news" @click="$router.push('/jinx')"></div>
             </section>
-            <dl>
+            <dl @click="$router.push('/jinx')">
                 <dt :style="{backgroundImage: `url(${$baseUrl}${$store.state.user.user.data.icon})`}"></dt>
                 <dd>{{$store.state.user.user.data.nikename}}</dd>
             </dl>

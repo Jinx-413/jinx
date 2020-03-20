@@ -13,7 +13,7 @@ const mutations = {
 const actions = {
     [types.BREAKFAST]: ({commit, state}, payload) => {
         //早餐
-        get({apiName: 'breakfast', type: 'BREAKFAST', commit})
+        get({apiName: 'breakfast', type: 'BREAKFAST', commit, params:{_limit:10}})
     },
 }
 

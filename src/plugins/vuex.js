@@ -11,13 +11,13 @@ import home2 from '../store/modules/home2.js'
 import breakfast from '../store/modules/breakfast.js'
 import takeaway from '../store/modules/takeaway.js'
 import user from '../store/modules/user.js'
-
+import oDetails from '../store/modules/oDetails'
 
 
 const store = new Vuex.Store({
     state, mutations,
     modules: {
-        home, breakfast, takeaway, user, home2
+        home, breakfast, takeaway, user, home2, oDetails
     }
 })
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="order-cell" @click="$emit('click')">
+    <div class="order-cell" @click="getODetails">
         <div class="cell-t">
             <dl>
                 <dt :style="{backgroundImage: data.img}"></dt>
@@ -29,6 +29,10 @@
                 //...
                 return {}
                 }
+            },
+            apiName:{
+                type:String,
+                default:null
             }
         },
         filters: {
@@ -58,6 +62,14 @@
         },
         computed: {
             
+        },
+        methods: {
+            getODetails(){
+                if(this.apiName){
+                // '路由跳转':'/detail/23423423443?apiname=column'
+                this.$router.push(`/oDetails/${this.data._id}?apiName=${this.apiName}`);//编程式跳转
+                }
+            }
         },
     }
 </script>

@@ -13,7 +13,7 @@ const mutations = {
 const actions = {
     [types.TAKEAWAY]: ({commit, state}, payload) => {
         //外卖
-        get({apiName: 'takeaway', type: 'TAKEAWAY', commit})
+        get({apiName: 'takeaway', type: 'TAKEAWAY', commit, params:{_limit:10}})
     },
 }
 

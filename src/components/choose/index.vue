@@ -1,5 +1,5 @@
 <template>
-    <dl>
+    <dl @click="$router.push('/jinx')">
         <dt><div :style="{backgroundImage:img}"></div></dt>
         <dd>
             <span>{{val}}</span>

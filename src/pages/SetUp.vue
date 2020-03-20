@@ -24,7 +24,7 @@
                 //删除 本地 token
                 window.localStorage.removeItem('user')
                 //删除状态管理的token
-                this.$store.commit(this.$types.USER, {err: 1})
+                this.$store.commit(`user/${this.$types.USER}`, {err: 1})
                 //发送注销请求
                 this.$router.replace('/login')
             }

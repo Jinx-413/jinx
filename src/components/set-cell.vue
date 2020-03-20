@@ -1,5 +1,5 @@
 <template>
-    <div class="set-cell" @click="$emit('click')">
+    <div class="set-cell" @click="$router.push('/jinx')">
         <p>{{p}}</p>
         <span>{{span}}</span>
         <div class="jian"></div>

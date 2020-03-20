@@ -1,9 +1,10 @@
 <template>
-        <section>
-            <nav class="nav1">
+    <div class="home">
+        <section v-if="$store.state.home2.home2[0]">
+            <nav class="nav1" @click="$router.push('/jinx')">
                 <img src="/img/wy_03.png" alt="">
             </nav>
-            <nav class="nav2">
+            <nav class="nav2" @click="$router.push('/jinx')">
                 <img src="/img/wy_06.png" alt="">
             </nav>
             <article>
@@ -35,16 +36,19 @@
                 />
             </aside>
         </section>
- 
+        <FrameScreen v-else/>
+    </div>
+        
 </template>
 
 <script>
     import Choose from '../components/choose' 
-    import Cell from '../components/cell' 
+    import Cell from '../components/cell'
+    import FrameScreen from '../components/frame-screen.vue' 
     export default {
         name:'home',
         components: {
-            Choose,Cell
+            Choose,Cell,FrameScreen
         },
         data() {
             return {
@@ -77,7 +81,8 @@
     }
 </script>
 <style scoped>
-    section{display:flex;flex-flow:column;padding:0.15rem 0.1rem;flex:1;overflow:auto;background: #fff;}
+    .home{display:flex;flex-flow:column;flex:1;overflow:auto;}
+    section{display:flex;flex-flow:column;padding:0.15rem 0.1rem;background: #fff;}
     section nav img{width:100%;}
     section .nav2{margin:0.05rem 0;}
     section article{display:flex;height:0.64rem;justify-content:space-between;padding:0 0.05rem;}

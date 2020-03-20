@@ -1,6 +1,6 @@
 export default {
     bNav:false,
-    bFooter:true,
+    bFooter:false,
     bLoading:false,
-    bHeader:true,
+    bHeader:false,
 }

@@ -14,6 +14,10 @@ import Details from '../pages/Details.vue'
 import goods from '../components/goods/goods.vue'
 import ratings from '../components/ratings/ratings.vue'
 import seller from '../components/seller/seller.vue'
+import OrderDetails from '../pages/OrderDetails.vue'
+import noPage from '../pages/noPage.vue'
+
+
 
 let routes = [
     {path:'/home', component: Home},
@@ -24,13 +28,15 @@ let routes = [
     {path:'/look', component: Look},
     {path:'/login', component: Login, name:'login'},
     {path:'/reg', component: Reg},
+    {path:'/oDetails/:_id', component: OrderDetails},
     {path:'/details/:_id', component: Details, redirect:'/details/:_id/goods', children:[
         {path:"goods",component:goods,name:'goods'},
         {path:"ratings",component:ratings,name:'ratings'},
         {path:"seller",component:seller,name:'seller'},
     ]},
     
-    {path:'/', redirect: '/home'}
+    {path:'/', redirect: '/home'},
+    {path:'*', component: noPage}
 ]
 
 const router = new VueRouter({

@@ -1,7 +1,9 @@
 <template>
     <div class="takeaway">
-        <order-cell :data="$store.state.breakfast.breakfast[index]" @click="push" 
+        <order-cell
+            :data="$store.state.breakfast.breakfast[index]" 
             v-for="(item, index) in $store.state.breakfast.breakfast" :key="index"
+            apiName="breakfast"
         />
     </div>
 </template>
@@ -17,9 +19,6 @@
             }
         },
         methods: {
-            push(){
-                alert('jinx')
-            }
         },
         mounted() {
             this.$store.dispatch(`breakfast/${this.$types.BREAKFAST}`)

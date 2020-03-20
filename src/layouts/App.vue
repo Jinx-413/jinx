@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <Loading v-if="$root.bLoading"/> -->
+    <Loading v-if="$store.state.bLoading"/>
     <Header v-if="$store.state.bHeader"/>   
     <router-view></router-view>
     <Footer v-if="$store.state.bFooter"/>
@@ -28,9 +28,10 @@
             // this.$root.bHeader=this.$root.bFooter=true;
             this.$store.commit('UPDATA_HEADER', true)
             this.$store.commit('UPDATA_FOOTER', true)
+            this.$store.commit('UPDATA_LOADING', false)  
           }
           
-          if(/login|reg|set|details|goods|ratings|seller/.test(path)){//detial login reg
+          if(/login|reg|set|details|goods|ratings|seller|oDetails|jinx/.test(path)){//detial login reg
             // this.$root.bHeader=this.$root.bFooter=false;
             this.$store.commit('UPDATA_HEADER', false)
             this.$store.commit('UPDATA_FOOTER', false)

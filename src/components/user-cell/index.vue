@@ -1,5 +1,5 @@
 <template>
-    <div class="user-cell">
+    <div class="user-cell" @click="$router.push('/jinx')">
         <div class="xing">
             <span :style="{backgroundImage: `url(${img})`}"></span>
             <span>{{p}}</span>

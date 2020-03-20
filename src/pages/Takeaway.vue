@@ -1,7 +1,9 @@
 <template>
     <div class="takeaway">
-        <order-cell :data="$store.state.takeaway.takeaway[index]" @click="push" 
+        <order-cell 
+            :data="$store.state.takeaway.takeaway[index]"
             v-for="(item, index) in $store.state.takeaway.takeaway" :key="index"
+            apiName="takeaway"
         />
     </div>
 </template>
@@ -17,9 +19,6 @@
             }
         },
         methods: {
-            push(){
-                alert('jinx')
-            }
         },
         mounted() {
             /* axios({

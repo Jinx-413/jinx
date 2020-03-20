@@ -1,11 +1,11 @@
 <template>
     <article class="weather">
-        <aside>
+        <aside @click="$router.push('/jinx')">
             <span>多云</span>
             <span>15℃</span>
         </aside>
-        <aside><div class="iconfont"></div></aside>
-        <aside><div class="iconfont1"></div></aside>
+        <aside @click="$router.push('/jinx')"><div class="iconfont"></div></aside>
+        <aside @click="$router.push('/jinx')"><div class="iconfont1"></div></aside>
     </article>
 </template>
 

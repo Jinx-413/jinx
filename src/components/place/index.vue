@@ -1,5 +1,5 @@
 <template>
-    <article class="place">
+    <article class="place" @click="$router.push('/jinx')">
         <aside><div class="iconfont"></div></aside>
         <span>{{place}}</span>
         <aside>
