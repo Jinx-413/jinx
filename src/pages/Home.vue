@@ -1,43 +1,31 @@
 <template>
-    <div class="home">
-        <section v-if="$store.state.home2.home2[0]">
+        <div v-if="true" class="h_s">
             <nav class="nav1" @click="$router.push('/jinx')">
                 <img src="/img/wy_03.png" alt="">
             </nav>
             <nav class="nav2" @click="$router.push('/jinx')">
                 <img src="/img/wy_06.png" alt="">
             </nav>
-            <article>
-                <choose
-                    :val="item.val"
-                    :img="item.img"
-                    v-for="(item, index) in $store.state.home.home.first" :key="index"
-                />
-            </article>
-            <article>
-                <choose
-                    :val="item.val"
-                    :img="item.img"
-                    v-for="(item, index) in $store.state.home.home.second" :key="index"
-                />
-            </article>
-            <div>
-                <aside></aside>
-                <aside></aside>
+            <div class="cd">
+                <div v-for="(item, index) in $store.state.home.home.choose" :key="index" class="choose">
+                    <choose
+                        :val="item.val"
+                        :img="item.img"
+                        v-for="(item, index) of $store.state.home.home.choose[index]" :key="index"
+                    />
+            </div>
             </div>
             <div class="footer">
                 <h2>附近商家</h2>
             </div>
             <aside class="main">
                 <cell
-                 :data="$store.state.home2.home2[index]"
-                 v-for="(item, index) in $store.state.home2.home2" :key="index"
+                 :data="$store.state.home.home.home[index]"
+                 v-for="(item, index) in $store.state.home.home.home" :key="index"
                  :apiName="'home'"
                 />
             </aside>
-        </section>
-        <FrameScreen v-else/>
-    </div>
+        </div>
         
 </template>
 
@@ -52,15 +40,6 @@
         },
         data() {
             return {
-                data:{
-                    img: 'url(http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg)',
-                    name: '欧品香坊（回龙观）',
-                    distance: 3.9,
-                    evaluation: 4.8,
-                    pick: 20,
-                    delivery: 3,
-                    mounth:138
-                },
                 first:[],
                 second: [],
             }
@@ -75,24 +54,20 @@
                 }
             ) */
             this.$store.dispatch(`home/${this.$types.HOME}`)
-
-            this.$store.dispatch(`home2/${this.$types.HOME2}`)
         },
     }
 </script>
 <style scoped>
-    .home{display:flex;flex-flow:column;flex:1;overflow:auto;}
-    section{display:flex;flex-flow:column;padding:0.15rem 0.1rem;background: #fff;}
-    section nav img{width:100%;}
-    section .nav2{margin:0.05rem 0;}
-    section article{display:flex;height:0.64rem;justify-content:space-between;padding:0 0.05rem;}
-    section article:nth-of-type(2){margin:0.11rem 0;}
-    section article:first-of-type{margin:0.05rem 0;}
-    section div{display:flex;justify-content:center;}
-    section div aside{width:0.15rem;height:0.04rem;background:red;border-radius:10px;}
-    section div aside:last-of-type{background:#e4e4e4;margin-left:5px;}
-    section div aside:first-of-type{background:#ffd161;margin-right:5px;}
-    section .footer{height:0.59rem;justify-content:flex-start;align-items:flex-end;}
-    section .footer h2{font-size:0.20rem;font-weight: bold;}
-    section .main{display: flex;flex-flow: column;padding-top:0.19rem}
+    .h_s{padding:0.15rem 0.1rem;background: #fff;flex:1;overflow:auto;}
+    .h_s nav img{width:100%;}
+    .h_s .nav2{margin:0.05rem 0 0.11rem 0;}
+    .h_s .cd{display: flex;flex-flow: column;height:1.5rem;width:100%;}
+    .h_s .choose{display:flex;justify-content:space-between;padding:0 0.05rem;margin-bottom: 0.11rem;}
+    .h_s div{display:flex;justify-content:center;}
+    .h_s div aside{width:0.15rem;height:0.04rem;background:red;border-radius:10px;}
+    .h_s div aside:last-of-type{background:#e4e4e4;margin-left:5px;}
+    .h_s div aside:first-of-type{background:#ffd161;margin-right:5px;}
+    .h_s .footer{height:0.59rem;justify-content:flex-start;align-items:flex-end;}
+    .h_s .footer h2{font-size:0.20rem;font-weight: bold;}
+    .h_s .main{display: flex;flex-flow: column;padding-top:0.19rem}
 </style>

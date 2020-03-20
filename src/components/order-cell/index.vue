@@ -79,7 +79,7 @@
     .order-cell .cell-t dl{display: flex;}
     .order-cell .cell-t dl dt{width:0.32rem;height:0.32rem;margin-right:0.11rem;background-size:100%;background-image:url(./img/default.jpg)}
     .order-cell .cell-t dl dd{display: flex;flex-flow: column;justify-content: center;}
-    .order-cell .cell-t dl dd p{font-size:0.17rem;}
+    .order-cell .cell-t dl dd p{font-size:0.17rem;margin-bottom: 0.07rem;}
     .order-cell .cell-t dl dd span{font-size:0.08rem;color:#777;}
     .order-cell .cell-t>p {font-size:0.11rem;color:#9e9e9e;padding-top:0.1rem;}
     .order-cell .cell-f{display: flex;justify-content: space-between;padding: 0.16rem 0;align-items: center;}

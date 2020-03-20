@@ -102,5 +102,5 @@
     .login .vx-qq dl:nth-child(2) dt{background-image:url(../assets/img/qq_login.png);}    
     .login .vx-qq dl dd{font-size:0.12rem;color:#999;}    
 
-    .error{position:absolute;width:80%;height:0.4rem;bottom: 3rem;left:0;right:0;margin: auto;border-radius:10px;border:1px solid #ccc;display: flex;justify-content: center;align-items: center;font-size:0.14rem;color: red;}    
+    .error{position:absolute;width:80%;height:0.4rem;top: 3rem;left:0;right:0;margin: auto;border-radius:10px;border:1px solid #ccc;display: flex;justify-content: center;align-items: center;font-size:0.14rem;color: red;}    
 </style>

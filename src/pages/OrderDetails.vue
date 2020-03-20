@@ -110,10 +110,10 @@
 </script>
 <style scoped>
     .o-d{display: flex;flex-flow:column;height:100%;}
-    .f{display: flex;flex-flow: column;flex:1;overflow: auto;}
+    .o-d .f{flex:1;overflow: auto;}
     .o-d ul{display: flex;flex-flow: column;}
-    .o-d h2{font-size: 0.15rem;padding:0.12rem;}
-    .o-d li{display: flex;align-items: center;padding:0.12rem;border-bottom:1px solid #f7f7f7;background:#fff;}
+    .o-d h2{font-size: 0.15rem;padding:0 0.12rem;height:0.45rem;line-height: 0.45rem;}
+    .o-d li{display: flex;align-items: center;padding:0 0.12rem;border-bottom:1px solid #f7f7f7;background:#fff;height:0.58rem;}
     .o-d li h3{font-size:0.13rem;color:#b8b8b8;width:0.85rem;}
     .o-d li p{font-size:0.14rem;color:#000;}
     .o-d dl{background:#fff;}
@@ -127,5 +127,5 @@
     .o-d dl dd div p:nth-child(1){font-size: 0.16rem;}
     .o-d dl dd div p:nth-child(2){font-size: 0.12rem;color:#c1c1c1}
     .o-d dl dd div p:nth-child(3){font-size: 0.12rem;color:#c1c1c1}
-    .o-d .btn{text-align: center;margin:0.18rem 0;border-top:1px solid #f7f7f7;background:#fff;padding:0.18rem 0;}
+    .o-d .btn{text-align: center;margin:0.18rem 0;border-top:1px solid #f7f7f7;background:#fff;padding:0.18rem 0;font-size: 0.16rem;}
 </style>
